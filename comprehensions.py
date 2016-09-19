@@ -53,7 +53,7 @@ def water_temp_floats(data):
 print(water_temp_floats(data_list))
 
 def fahrenheit(data):
-    degrees_f = [(float(row[4]) * 1.8) + 32 for row in data]
+    degrees_f = [int((float(row[4]) * 1.8) + 32) for row in data]
     return degrees_f
 
 print(fahrenheit(data_list))
