@@ -1,9 +1,4 @@
-def devowel(sentence):
-    vowels = ['a', 'e', 'i', 'o', 'u']
-    no_vowels = [letter for letter in sentence if letter not in vowels]
-    return ''.join(no_vowels)
 
-print(devowel('List Comprehensions are the Greatest!'))
 
 data_list = [
              ['0', '1.55', '8.33', '5.04', '26.5', '2015-08-01'],
@@ -37,21 +32,18 @@ data_list = [
              ['28', '1.7', '15.38', '7.34', '28.1', '2015-08-30'],
              ['29', '1.83', '7.14', '6.28', '27.8', '2015-08-31']]
 
+def date_waveheight(data):
+    my_dict = {row[5]: row[1] for row in data}
+    return my_dict
 
-def water_temps(data):
-     temps = [row[4] for row in data]
-     return temps
+print(date_waveheight(data_list))
 
-print(water_temps(data_list))
+sun = []
+mon = []
+tues = []
+wed = []
+thur = []
+fri = []
+sat = data_list[:35:7]
 
-def water_temp_floats(data):
-    temp_floats = [float(row[4]) for row in data]
-    return temp_floats
-
-print(water_temp_floats(data_list))
-
-def fahrenheit(data):
-    degrees_f = [int((float(row[4]) * 1.8) + 32) for row in data]
-    return degrees_f
-
-print(fahrenheit(data_list))
+print(sat)
