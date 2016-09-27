@@ -1,3 +1,4 @@
+
 def devowel(sentence):
     vowels = ['a', 'e', 'i', 'o', 'u']
     no_vowels = [letter for letter in sentence if letter not in vowels]
@@ -5,53 +6,31 @@ def devowel(sentence):
 
 print(devowel('List Comprehensions are the Greatest!'))
 
-data_list = [
-             ['0', '1.55', '8.33', '5.04', '26.5', '2015-08-01'],
-             ['1', '1.97', '8.33', '5.96', '26.2', '2015-08-02'],
-             ['2', '1.89', '9.09', '5.97', '26.2', '2015-08-03'],
-             ['3', '1.62', '12.5', '6.7', '26.2', '2015-08-04'],
-             ['4', '1.72', '9.09', '7.31', '26.5', '2015-08-05'],
-             ['5', '4.09', '13.33', '9.58', '26.9', '2015-08-06'],
-             ['6', '3.52', '11.11', '8.2', '27.0', '2015-08-07'],
-             ['7', '2.18', '8.33', '6.0', '26.9', '2015-08-08'],
-             ['8', '2.14', '9.09', '6.25', '27.1', '2015-08-09'],
-             ['9', '2.2', '9.09', '6.15', '27.0', '2015-08-10'],
-             ['10', '1.8', '10.53', '6.3', '26.9', '2015-08-11'],
-             ['11', '1.99', '8.33', '6.25', '26.8', '2015-08-12'],
-             ['12', '1.81', '8.33', '6.02', '26.9', '2015-08-13'],
-             ['13', '1.8', '8.33', '5.46', '27.1', '2015-08-14'],
-             ['14', '1.75', '7.69', '5.06', '27.1', '2015-08-15'],
-             ['15', '1.6', '7.69', '5.0', '27.2', '2015-08-16'],
-             ['16', '1.43', '7.69', '6.25', '27.5', '2015-08-17'],
-             ['17', '1.51', '9.09', '6.8', '27.7', '2015-08-18'],
-             ['18', '1.54', '7.69', '6.84', '27.6', '2015-08-19'],
-             ['19', '1.52', '7.69', '6.63', '28.1', '2015-08-20'],
-             ['20', '1.47', '7.69', '5.74', '27.5', '2015-08-21'],
-             ['21', '1.71', '8.33', '5.46', '27.7', '2015-08-22'],
-             ['22', '2.02', '7.69', '5.58', '27.4', '2015-08-23'],
-             ['23', '0.98', '9.09', '5.44', '27.4', '2015-08-25'],
-             ['24', '0.8', '9.09', '6.28', '28.0', '2015-08-26'],
-             ['25', '0.64', '7.69', '5.26', '28.7', '2015-08-27'],
-             ['26', '0.89', '15.38', '6.89', '28.9', '2015-08-28'],
-             ['27', '1.42', '18.18', '7.95', '28.5', '2015-08-29'],
-             ['28', '1.7', '15.38', '7.34', '28.1', '2015-08-30'],
-             ['29', '1.83', '7.14', '6.28', '27.8', '2015-08-31']]
+with open('data.csv') as open_file:
+    next(open_file)
+    contents = open_file.readlines()
+data_list = [row.replace('\n', "").split(',') for row in contents]
 
 
-def water_temps(data):
-     temps = [row[4] for row in data]
-     return temps
-
+def water_temps(data_list):
+    temps = [row[4] for row in data_list]
+    return temps
 print(water_temps(data_list))
 
-def water_temp_floats(data):
-    temp_floats = [float(row[4]) for row in data]
-    return temp_floats
 
+def water_temp_floats(data_list):
+    temp_floats = [float(row[4]) for row in data_list]
+    return temp_floats
 print(water_temp_floats(data_list))
 
-def fahrenheit(data):
-    degrees_f = [int((float(row[4]) * 1.8) + 32) for row in data]
-    return degrees_f
 
+def fahrenheit(data_list):
+    degrees_f = [int((float(row[4]) * 1.8) + 32) for row in data_list]
+    return degrees_f
 print(fahrenheit(data_list))
+
+
+def date_waveheight(data_list):
+    date_wh = {row[5]: row[1] for row in data_list}
+    return date_wh
+print(date_waveheight(data_list))
